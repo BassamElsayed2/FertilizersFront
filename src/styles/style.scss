@@ -118,4 +118,69 @@
 ***************************************/
 // @import 'rtl/rtl';
 
-
+div.benefit-card {
+	border-radius: 20px;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+	padding: 2rem;
+	text-align: center;
+	direction: rtl;
+	transition: transform 0.4s ease, box-shadow 0.4s ease;
+	animation: cardEnter 0.8s ease forwards;
+	transform: scale(0.98) translateY(20px);
+	opacity: 0;
+	height: 100%;
+  
+	&:hover {
+		transform: scale(1.02) translateY(-6px);
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+	}
+  
+	img {
+	  width: 150px;
+	  height: 150px;
+	  object-fit: contain;
+	  border-radius: 10px;
+	  margin-bottom: 1.5rem;
+	  transition: transform 0.3s ease;
+	}
+  
+	h5 {
+	  font-size: 1.75rem; 
+	  font-weight: 800;
+	  margin-bottom: 1rem;
+	  color: #198754;
+	  font-family: 'Cairo', sans-serif;
+	}
+  
+	p {
+	  font-size: 1.5rem;
+	  color: #495057;
+	  line-height: 2;
+	  font-family: 'Cairo', sans-serif;
+	  padding: 0 0.5rem;
+	}
+  }
+  
+  @keyframes cardEnter {
+	to {
+	  opacity: 1;
+	  transform: scale(1) translateY(0);
+	}
+  }
+  @media (max-width: 768px) {
+	.benefit-card h5 {
+	  font-size: 1.25rem;
+	}
+  
+	.benefit-card p {
+		font-size: 0.95rem;
+		line-height: 1.6;
+		}
+	.benefit-card img {
+		width: 80px;
+    height: 80px;
+	  }
+  }
+  

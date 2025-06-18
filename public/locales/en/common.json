@@ -19,5 +19,35 @@
   },
   "post": {
     "readMore": "Read More"
+  },
+  "fertilizerSection": {
+    "title": "Importance of Fertilizers and Nutrients",
+    "description": "Fertilizers and nutrients play a vital role in promoting plant growth and increasing crop production by providing essential nutrients that plants need. They also contribute to improving soil fertility and achieving a nutritional balance, which enhances crop quality and increases agricultural efficiency.",
+    "benefits": [
+      {
+        "title": "Providing Essential Nutrients",
+        "text": "Soil may lack important nutrients such as nitrogen, phosphorus, or magnesium. Fertilizers supply these nutrients that are naturally deficient in the soil."
+      },
+      {
+        "title": "Enhancing Plant Growth",
+        "text": "Fertilizers contribute to healthy plant development by providing the necessary elements for roots, stems, leaves, and flowers. They also accelerate the plant’s metabolic processes."
+      },
+      {
+        "title": "Increasing Agricultural Productivity",
+        "text": "Fertilizers help improve soil fertility and supply plants with essential nutrients such as nitrogen, phosphorus, and potassium, which contribute to increased yield and quality."
+      },
+      {
+        "title": "Adapting to Harsh Environmental Conditions",
+        "text": "Fertilizers enhance the plant’s ability to adapt to various environmental conditions such as poor soil, drought, or extreme weather."
+      },
+      {
+        "title": "Stimulating Proper Crop Growth",
+        "text": "Fertilizers support balanced plant growth, leading to improved agricultural productivity and increased economic returns for farmers."
+      },
+      {
+        "title": "Improving Soil Fertility",
+        "text": "Organic fertilizers like compost or manure can improve soil structure, making it more aerated and enhancing its water retention capacity."
+      }
+    ]
   }
 }

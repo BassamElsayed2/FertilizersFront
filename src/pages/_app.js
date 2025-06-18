@@ -7,6 +7,7 @@ import { appWithTranslation } from "next-i18next";
 import { IntlProvider } from "next-intl";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
