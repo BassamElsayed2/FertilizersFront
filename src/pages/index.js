@@ -13,31 +13,38 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useQuery } from "@tanstack/react-query";
 import { getNews } from "../../services/apiNews";
 import GalleryOne from "../common/gallery/GalleryOne";
+import SliderOne from "../common/components/slider/SliderOne";
+import HeaderOne from "../common/elements/header/HeaderOne";
+import PostSectionOne from "../common/components/post/PostSectionOne";
+import PostSectionTwo from "../common/components/post/PostSectionTwo";
 
 const TechBlog = ({ allPosts }) => {
-  const { data: news } = useQuery({
-    queryKey: ["news"],
-    queryFn: getNews,
-  });
+  // const { data: news } = useQuery({
+  //   queryKey: ["news"],
+  //   queryFn: getNews,
+  // });
 
-  const techPost = allPosts.filter(
-    (post) =>
-      slugify(post.cate) === "technology" || slugify(post.cate) === "leadership"
-  );
+  // const techPost = allPosts.filter(
+  //   (post) =>
+  //     slugify(post.cate) === "technology" || slugify(post.cate) === "leadership"
+  // );
 
   return (
     <>
       <HeadTitle />
-      <HeaderThree postData={allPosts} />
-      <PostSectionNine news={news} />
+      <HeaderOne />
+      <SliderOne postData={allPosts} />
+      <PostSectionOne postData={allPosts} />
+      <PostSectionTwo postData={allPosts} />
+      {/* <PostSectionNine news={news} />
       <CategoryListSlide cateData={allPosts} />
       <PostSectionTen postData={allPosts} />
-      <PostSectionThree postData={news} />
+      <PostSectionThree postData={news} /> */}
       {/* <PostSectionFour postData={techPost} adBanner={true} /> */}
 
-      <PostSectionEleven />
+      {/* <PostSectionEleven />
 
-      <GalleryOne parentClass="bg-color-grey" />
+      <GalleryOne parentClass="bg-color-grey" /> */}
       <FooterThree />
     </>
   );
