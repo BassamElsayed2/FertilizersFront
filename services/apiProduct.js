@@ -2,7 +2,7 @@ import supabase from "./supabase";
 
 export async function getProducts() {
   const { data, error } = await supabase
-    .from("products")
+    .from("product")
     .select("*")
     .order("created_at", { ascending: false });
 
