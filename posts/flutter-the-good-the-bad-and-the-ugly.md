@@ -1,7 +1,7 @@
 ---
 postFormat: "video"
 title: "زيادة الإنتاجية الزراعية"
-featureImg: "/images/feature1.png"
+featureImg: "/images/fertilizer3.png"
 videoLink: "https://www.youtube.com/embed/U3v5yMF1hTs?origin=https://new.axilthemes.com/"
 featured: true
 date: "Feb 15 2022"
