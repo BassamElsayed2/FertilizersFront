@@ -12,6 +12,7 @@ const PostSectionOne = ({ postData }) => {
   return (
     <div className="axil-section-gap bg-color-white">
       <div className="container">
+
           {/* <SectionTitleOne title="More Featured Posts." /> */}
         <div className="d-flex justify-content-center align-items-center flex-column text-center mb-5">
           <h2 className="fw-bold mb-3" style={{ fontSize: '2.5rem', color: '#198754', fontFamily: 'Cairo, sans-serif' }}>
@@ -27,6 +28,7 @@ const PostSectionOne = ({ postData }) => {
             }}
           >
             {t('fertilizerSection.description')}
+
           </p>
         </div>
         <FertilizerBenefits />

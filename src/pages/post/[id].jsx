@@ -30,13 +30,6 @@ const NewsDetailsPage = ({ allPosts, initialData }) => {
     queryFn: getNews,
   });
 
-  const { data: ads } = useQuery({
-    queryKey: ["ads"],
-    queryFn: getAds,
-  });
-
-  const otherads = ads?.filter((ad) => ad.location === "other");
-
   if (isLoadingPost) {
     return <div>Loading...</div>;
   }
@@ -104,22 +97,10 @@ const NewsDetailsPage = ({ allPosts, initialData }) => {
               </div>
             </div>
             <div className="col-lg-4">
-              <SidebarOne dataPost={postData} />
+              {/* <SidebarOne dataPost={postData} /> */}
               <WidgetVideoPost postData={postData} />
             </div>
           </div>
-          {otherads?.length > 0 && (
-            <div className="row">
-              <div className="col-lg-12">
-                <AddBanner
-                  img={otherads[0].image_url}
-                  height="200"
-                  width="1230"
-                  pClass="mt--30"
-                />
-              </div>
-            </div>
-          )}
         </div>
       </div>
       <FooterThree />
