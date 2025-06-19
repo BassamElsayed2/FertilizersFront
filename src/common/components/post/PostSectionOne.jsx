@@ -13,7 +13,6 @@ const PostSectionOne = ({ postData }) => {
   return (
     <div className="axil-featured-post axil-section-gap bg-color-grey">
       <div className="container">
-        {/* <SectionTitleOne title="More Featured Posts." /> */}
         <div className="d-flex justify-content-center align-items-center flex-column">
           <h3>
             {locale === "en"
