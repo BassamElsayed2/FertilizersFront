@@ -3,9 +3,16 @@ import Link from "next/link";
 import Image from "next/image";
 import SocialData from "../../../data/social/SocialData.json";
 import { useLocale } from "next-intl";
+import { getAboutUs } from "../../../../services/apiAboutUs";
+import { useQuery } from "@tanstack/react-query";
 
 const FooterThree = ({ bgColor, darkLogo, lightLogo }) => {
   const locale = useLocale();
+
+  const { data: logo } = useQuery({
+    queryKey: ["site_settings"],
+    queryFn: getAboutUs,
+  });
 
   if (typeof window !== "undefined") {
     var colorMode = window.localStorage.getItem("color-mode");
@@ -67,11 +74,7 @@ const FooterThree = ({ bgColor, darkLogo, lightLogo }) => {
                         className="dark-logo"
                         width={141}
                         height={37}
-                        src={
-                          colorMode === "Dark"
-                            ? lightLogo || "/images/logo/logo-white2.webp"
-                            : darkLogo || "/images/logo/logo-black.webp"
-                        }
+                        src={logo?.logo_url || "/images/logo/logo-black.webp"}
                         alt="Blogar logo"
                       />
                     </a>
