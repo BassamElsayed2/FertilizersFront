@@ -17,7 +17,7 @@ import SliderOne from "../common/components/slider/SliderOne";
 import HeaderOne from "../common/elements/header/HeaderOne";
 import PostSectionOne from "../common/components/post/PostSectionOne";
 import PostSectionTwo from "../common/components/post/PostSectionTwo";
-
+import Products from "../common/components/sidebar/Products";
 const TechBlog = ({ allPosts }) => {
   // const { data: news } = useQuery({
   //   queryKey: ["news"],
@@ -35,6 +35,7 @@ const TechBlog = ({ allPosts }) => {
       <HeaderOne />
       <SliderOne postData={allPosts} />
       <PostSectionOne postData={allPosts} />
+      <Products />
       <PostSectionTwo postData={allPosts} />
       {/* <PostSectionNine news={news} />
       <CategoryListSlide cateData={allPosts} />
