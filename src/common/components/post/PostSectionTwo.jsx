@@ -118,9 +118,24 @@ const PostSectionTwo = ({ postData, adBanner, headingTitle }) => {
           )}
 
           <div className="d-flex justify-content-center align-items-center flex-column mb--10">
-            <h3>{locale === "en" ? "Our Services" : "خدمتنا"}</h3>
+            <h2
+              className="fw-bold mb-3"
+              style={{
+                fontSize: "2.5rem",
+                color: "#198754",
+                fontFamily: "Cairo, sans-serif",
+              }}
+            >
+              {locale === "en" ? "Our Services" : "خدمتنا"}
+            </h2>
             <p
-              style={{ width: "700px", textAlign: "center", fontSize: "12px" }}
+              style={{
+                maxWidth: "800px",
+                fontSize: "1.25rem",
+                color: "#6c757d",
+                lineHeight: "2",
+                fontFamily: "Cairo, sans-serif",
+              }}
             >
               {locale === "en"
                 ? "We have succeeded in spreading our natural organic invention all over the world where we are helped by countries and governments and institutions and we have won the silver medal in the world invention conference and our factories in the Arab Gulf and Taiwan and Turkey where we are experts and there is no agricultural organization without borders that relies on us the countries"

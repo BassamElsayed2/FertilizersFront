@@ -41,7 +41,11 @@ const Products = () => {
   return (
     <div className="axil-post-grid-area axil-section-gap bg-color-white">
       <div className="container">
-        <SectionTitleOne title={t("sectionTitle")} />
+      <SectionTitleOne
+  title={t("sectionTitle")}
+  className="products-section-title"
+/>
+
         <div className="row mt--40">
           <div className="col-xl-5 col-lg-6 col-md-12 col-12">
             {postData.slice(1, 6).map((data) => (
@@ -108,7 +112,9 @@ const Products = () => {
                 </div>
               )}
               <div className="post-grid-content">
-                <div className="post-content">
+                <div className="post-content">   
+                 
+                  
                   <h3 className="title">
                     <Link href={`/${locale}/post/${firstPost?.id}`}>
                       <a>{locale === "en" ? firstPost?.title_en : firstPost?.title_ar}</a>

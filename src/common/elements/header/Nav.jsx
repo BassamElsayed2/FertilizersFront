@@ -54,7 +54,7 @@ const Nav = ({ posts }) => {
   };
 
   return (
-    <ul className="mainmenu">
+    <ul className="mainmenu ">
       <li className="menu-item-has-children">
         <Link href="/">{locale === "en" ? "Home" : "الرئيسية"}</Link>
       </li>
