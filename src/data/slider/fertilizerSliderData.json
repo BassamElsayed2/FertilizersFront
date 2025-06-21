@@ -1,0 +1,52 @@
+{
+  "slides": [
+    {
+      "id": 1,
+      "image": "/images/fertilizer1.png",
+      "title": "أسمدة عضوية طبيعية",
+      "description": "أسمدة عضوية 100% طبيعية لتحسين خصوبة التربة وزيادة إنتاجية المحاصيل",
+      "buttonText": "تسوق الأسمدة العضوية",
+      "buttonLink": "/products"
+    },
+    {
+      "id": 2,
+      "image": "/images/fertilizer2.png",
+      "title": "أسمدة كيميائية متوازنة",
+      "description": "أسمدة كيميائية متوازنة تحتوي على جميع العناصر الغذائية الأساسية للنباتات",
+      "buttonText": "اكتشف الأسمدة الكيميائية",
+      "buttonLink": "/products"
+    },
+    {
+      "id": 3,
+      "image": "/images/fertilizer3.png",
+      "title": "أسمدة سائلة سريعة المفعول",
+      "description": "أسمدة سائلة سريعة الامتصاص لمعالجة نقص العناصر الغذائية بسرعة",
+      "buttonText": "تسوق الأسمدة السائلة",
+      "buttonLink": "/products"
+    },
+    {
+      "id": 4,
+      "image": "/images/fertilizer4.png",
+      "title": "أسمدة خاصة بالخضروات",
+      "description": "أسمدة مخصصة لزراعة الخضروات والفواكه لضمان محصول وفير وصحي",
+      "buttonText": "تسوق أسمدة الخضروات",
+      "buttonLink": "/products"
+    },
+    {
+      "id": 5,
+      "image": "/images/fertilizer5.png",
+      "title": "أسمدة للحدائق المنزلية",
+      "description": "أسمدة مثالية للحدائق المنزلية والنباتات الداخلية والخارجية",
+      "buttonText": "تسوق أسمدة الحدائق",
+      "buttonLink": "/products"
+    },
+    {
+      "id": 6,
+      "image": "/images/fertilizer6.png",
+      "title": "أسمدة متخصصة للمحاصيل",
+      "description": "أسمدة متخصصة لمختلف أنواع المحاصيل الزراعية والثمار",
+      "buttonText": "تسوق الأسمدة المتخصصة",
+      "buttonLink": "/products"
+    }
+  ]
+}

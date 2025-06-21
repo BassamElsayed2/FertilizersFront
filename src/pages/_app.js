@@ -15,10 +15,12 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     // ضبط الاتجاه بناءً على اللغة
-    if (locale === "ar") {
-      document.documentElement.dir = "rtl";
-    } else {
-      document.documentElement.dir = "ltr";
+    if (typeof window !== "undefined" && document) {
+      if (locale === "ar") {
+        document.documentElement.dir = "rtl";
+      } else {
+        document.documentElement.dir = "ltr";
+      }
     }
   }, [locale]);
 

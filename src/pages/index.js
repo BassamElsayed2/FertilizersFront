@@ -1,14 +1,11 @@
 import FooterThree from "../common/elements/footer/FooterThree";
 import { getAllPosts } from "../../lib/api";
-import HeaderThree from "../common/elements/header/HeaderThree";
+
 import HeadTitle from "../common/elements/head/HeadTitle";
-import { slugify, SortingByDate } from "../common/utils";
-import PostSectionNine from "../common/components/post/PostSectionNine";
-import CategoryListSlide from "../common/components/category/CategoryListSlide";
-import PostSectionThree from "../common/components/post/PostSectionThree";
-import PostSectionFour from "../common/components/post/PostSectionFour";
+import { SortingByDate } from "../common/utils";
+
 import PostSectionTen from "../common/components/post/PostSectionTen";
-import PostSectionEleven from "../common/components/post/PostSectionEleven";
+
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useQuery } from "@tanstack/react-query";
 import { getNews } from "../../services/apiNews";
@@ -17,34 +14,44 @@ import SliderOne from "../common/components/slider/SliderOne";
 import HeaderOne from "../common/elements/header/HeaderOne";
 import PostSectionOne from "../common/components/post/PostSectionOne";
 import PostSectionTwo from "../common/components/post/PostSectionTwo";
+import SliderTwo from "../common/components/slider/SliderTwo";
+import SliderThree from "../common/components/slider/SliderThree";
 
 const TechBlog = ({ allPosts }) => {
-  // const { data: news } = useQuery({
-  //   queryKey: ["news"],
-  //   queryFn: getNews,
-  // });
-
-  // const techPost = allPosts.filter(
-  //   (post) =>
-  //     slugify(post.cate) === "technology" || slugify(post.cate) === "leadership"
-  // );
+  const {
+    data: services,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["news"],
+    queryFn: getNews,
+  });
+  const filteredServices = services?.filter(
+    (item) => item.category?.name_en === "Service"
+  );
+  const filteredNews = services?.filter(
+    (item) => item.category?.name_en === "news"
+  );
 
   return (
     <>
       <HeadTitle />
       <HeaderOne />
-      <SliderOne postData={allPosts} />
+      <SliderThree />
       <PostSectionOne postData={allPosts} />
-      <PostSectionTwo postData={allPosts} />
+      <PostSectionTwo
+        postData={allPosts}
+        services={filteredServices}
+        headingTitle="services"
+      />
       <PostSectionTen postData={allPosts} />
-      {/* <PostSectionNine news={news} />
-      <CategoryListSlide cateData={allPosts} />
-      <PostSectionThree postData={news} /> */}
-      {/* <PostSectionFour postData={techPost} adBanner={true} /> */}
+      <PostSectionTwo
+        postData={allPosts}
+        services={filteredNews}
+        headingTitle="news"
+      />
 
-      {/* <PostSectionEleven />
-
-      <GalleryOne parentClass="bg-color-grey" /> */}
+      <GalleryOne parentClass="bg-color-grey" />
       <FooterThree />
     </>
   );

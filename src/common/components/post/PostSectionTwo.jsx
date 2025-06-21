@@ -11,22 +11,8 @@ import { useLocale } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 import { getNews } from "../../../../services/apiNews";
 
-const PostSectionTwo = ({ postData, adBanner, headingTitle }) => {
+const PostSectionTwo = ({ postData, adBanner, headingTitle, services }) => {
   const locale = useLocale();
-
-  const {
-    data: services,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["news"],
-    queryFn: getNews,
-  });
-
-  // فلترة العناصر بحيث يكون الكاتيجوري = 'service'
-  const filteredServices = services?.filter(
-    (item) => item.category?.name_en === "Service"
-  );
 
   const handleChange = (e) => {
     let filterText = slugify(e.target.textContent);
@@ -126,7 +112,13 @@ const PostSectionTwo = ({ postData, adBanner, headingTitle }) => {
                 fontFamily: "Cairo, sans-serif",
               }}
             >
-              {locale === "en" ? "Our Services" : "خدمتنا"}
+              {headingTitle == "services"
+                ? locale === "en"
+                  ? "Our Services"
+                  : "خدمتنا"
+                : locale === "en"
+                ? "Our News"
+                : "اخر الاخبار"}
             </h2>
             <p
               style={{
@@ -135,11 +127,17 @@ const PostSectionTwo = ({ postData, adBanner, headingTitle }) => {
                 color: "#6c757d",
                 lineHeight: "2",
                 fontFamily: "Cairo, sans-serif",
+                textAlign: "center",
+                marginBottom: "20px",
               }}
             >
-              {locale === "en"
-                ? "We have succeeded in spreading our natural organic invention all over the world where we are helped by countries and governments and institutions and we have won the silver medal in the world invention conference and our factories in the Arab Gulf and Taiwan and Turkey where we are experts and there is no agricultural organization without borders that relies on us the countries"
-                : "نجحت شركتنا فى نشر اختراعتنا العضوية الطبيعية فى جميع انحاء العالم حيث تستعين بنادول وحكومات وهيئات ونالت الشركة الميدالية الفضية فى مؤتمر الاختراعات العالمي ومصانعنا فى الخليج العربي وتيوان وتركيا فنحن خبراء فلا منظمة زراعيون بلا حدود تستعين بنا الدول"}
+              {headingTitle == "services"
+                ? locale === "en"
+                  ? "We have succeeded in spreading our natural organic invention all over the world where we are helped by countries and governments and institutions and we have won the silver medal in the world invention conference and our factories in the Arab Gulf and Taiwan and Turkey where we are experts and there is no agricultural organization without borders that relies on us the countries"
+                  : "نجحت شركتنا فى نشر اختراعتنا العضوية الطبيعية فى جميع انحاء العالم حيث تستعين بنادول وحكومات وهيئات ونالت الشركة الميدالية الفضية فى مؤتمر الاختراعات العالمي ومصانعنا فى الخليج العربي وتيوان وتركيا فنحن خبراء فلا منظمة زراعيون بلا حدود تستعين بنا الدول"
+                : locale === "en"
+                ? "We publish news about the company within the framework of the company's commitment to providing comprehensive agricultural solutions that support farmers and contribute to increasing agricultural productivity in a sustainable manner"
+                : "نقوم بنشر اخبار الشركة في إطار التزام الشركة بتوفير حلول زراعية متكاملة تدعم المزارعين وتساهم في زيادة الإنتاجية الزراعية بشكل مستدام"}
             </p>
           </div>
           <div className="row">
@@ -148,7 +146,7 @@ const PostSectionTwo = ({ postData, adBanner, headingTitle }) => {
                 {...slideSettings}
                 className="modern-post-activation slick-layout-wrapper axil-slick-arrow arrow-between-side"
               >
-                {filteredServices?.map((data) => (
+                {services?.map((data) => (
                   <div className="slick-single-layout" key={data.id}>
                     <div className="content-block modern-post-style text-center content-block-column">
                       <div className="post-content">
@@ -167,7 +165,7 @@ const PostSectionTwo = ({ postData, adBanner, headingTitle }) => {
                               src="/images/icons/shape-01.webp"
                               alt="Round Shape"
                               height={77}
-                              width={390}
+                              width={410}
                               priority={true}
                             />
                           </div>

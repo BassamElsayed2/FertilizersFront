@@ -1,6 +1,5 @@
-
 .langSwitcher {
-  background-color: #D93E40;
+  background-color: #198754;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -11,7 +10,7 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #b83b3e;
+    background-color: #1b915a;
   }
 
   &:focus {

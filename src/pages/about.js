@@ -2,10 +2,7 @@ import BreadcrumbTwo from "../common/elements/breadcrumb/breadcrumbTwo";
 import FooterThree from "../common/elements/footer/FooterThree";
 import HeaderOne from "../common/elements/header/HeaderOne";
 import { getAllPosts } from "../../lib/api";
-import WidgetCategory from "../common/components/sidebar/WidgetCategory";
-import WidgetSearch from "../common/components/sidebar/WidgetSearch";
-import WidgetPostList from "../common/components/sidebar/WidgetPostList";
-import WidgetSocialShare from "../common/components/sidebar/WidgetSocialShare";
+
 import HeadTitle from "../common/elements/head/HeadTitle";
 import GalleryOne from "../common/gallery/GalleryOne";
 import { getAboutUs } from "../../services/apiAboutUs";
@@ -32,7 +29,7 @@ const AboutUs = ({ allPosts }) => {
             ? "أينما ومتى أحتاج إليكم. نحن هنا لك – تواصل معنا لجميع احتياجاتكم. <br /> بأي مساعدة تحتاجون."
             : "Wherever &amp; whenever you need us. We are here for you – contact us for all your support needs. <br /> be it technical, general queries or information support."
         }
-        bgImae="url('/images/about.png')"
+        bgImae="url('/images/nav.jpg')"
       />
       <div className="axil-post-list-area axil-section-gap bg-color-white">
         <div className="container">
@@ -54,9 +51,9 @@ const AboutUs = ({ allPosts }) => {
               {/* End About Area  */}
             </div>
             <div className="col-lg-4 col-xl-4 mt_md--40 mt_sm--40">
-              <div className="sidebar-inner">
+              {/* <div className="sidebar-inner">
                 <WidgetPostList postData={allPosts} />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

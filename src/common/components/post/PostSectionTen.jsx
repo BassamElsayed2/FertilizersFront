@@ -56,12 +56,13 @@ const PostSectionTen = () => {
           </h2>
           <Link
             href={`/${locale}/products`}
-            className="btn btn-outline-dark d-flex align-items-center justify-content-center px-4 py-2 fw-bold"
             style={{
               fontSize: "1.5rem",
             }}
           >
-            {locale === "en" ? "View All" : "عرض الكل"}
+            <a className="btn btn-outline-success d-flex align-items-center justify-content-center px-4 py-2 fw-bold">
+              {locale === "en" ? "View All" : "عرض الكل"}
+            </a>
           </Link>
         </div>
         <div className="row">
@@ -103,18 +104,19 @@ const PostSectionTen = () => {
                       </div>
                       <div className="post-content mr--10">
                         <h4 className="title">
-                          <Link
-                            href={`/${locale}/products/${data.id}`}
-                            className="fw-bold mb-3"
-                            style={{
-                              fontSize: "2.5rem",
-                              color: "#198754",
-                              fontFamily: "Cairo, sans-serif",
-                            }}
-                          >
-                            {locale === "en"
-                              ? data.title_en || "Product"
-                              : data.title_ar || "المنتج"}
+                          <Link href={`/${locale}/products/${data.id}`}>
+                            <a
+                              className="fw-bold mb-3"
+                              style={{
+                                fontSize: "2.5rem",
+                                color: "#198754",
+                                fontFamily: "Cairo, sans-serif",
+                              }}
+                            >
+                              {locale === "en"
+                                ? data.title_en || "Product"
+                                : data.title_ar || "المنتج"}
+                            </a>
                           </Link>
                         </h4>
 
@@ -157,18 +159,19 @@ const PostSectionTen = () => {
                     <div className="post-grid-content">
                       <div className="post-content">
                         <h3 className="title">
-                          <Link
-                            href={`/${locale}/products/${firstPost?.id}`}
-                            className="fw-bold mb-3"
-                            style={{
-                              fontSize: "2.5rem",
-                              color: "#000",
-                              fontFamily: "Cairo, sans-serif",
-                            }}
-                          >
-                            {locale === "en"
-                              ? firstPost?.title_en || "Product"
-                              : firstPost?.title_ar || "المنتج"}
+                          <Link href={`/${locale}/products/${firstPost?.id}`}>
+                            <a
+                              className="fw-bold mb-3"
+                              style={{
+                                fontSize: "2.5rem",
+                                color: "#000",
+                                fontFamily: "Cairo, sans-serif",
+                              }}
+                            >
+                              {locale === "en"
+                                ? firstPost?.title_en || "Product"
+                                : firstPost?.title_ar || "المنتج"}
+                            </a>
                           </Link>
                         </h3>
                       </div>
