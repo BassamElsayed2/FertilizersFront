@@ -48,8 +48,8 @@ export default function NewsPage({ allPosts }) {
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
     const isNewsCategory =
-      item.category?.name_en?.toLowerCase() === "news" ||
-      item.category?.name_ar?.toLowerCase() === "news";
+      item.category?.name_en?.toLowerCase() === "Service" ||
+      item.category?.name_ar?.toLowerCase() === "خدمة";
     return matchesSearch && isNewsCategory;
   });
 
