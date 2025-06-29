@@ -1,11 +1,11 @@
 .langSwitcher {
-  background-color: #198754;
+  background-color: #06502b;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   border: none;
-  width: 90px;
-  font-size: 16px;
+  width: 60px;
+  font-size: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 

@@ -148,29 +148,29 @@ const PostSectionTwo = ({ postData, adBanner, headingTitle, services }) => {
               >
                 {services?.map((data) => (
                   <div className="slick-single-layout" key={data.id}>
-                    <div className="content-block modern-post-style text-center content-block-column">
-                      <div className="post-content">
-                        <h4 className="title">
-                          <Link href={`/${locale}/post/${data.id}`}>
-                            <a>
-                              {locale === "en" ? data.title_en : data.title_ar}
-                            </a>
-                          </Link>
-                        </h4>
-                      </div>
+                    <div
+                      className="content-block modern-post-style text-center content-block-column"
+                      style={{
+                        background: "#fff",
+                        borderRadius: "12px",
+                        boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
+                        padding: "0",
+                        margin: "10px",
+                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                        border: "1px solid #f0f0f0",
+                        overflow: "hidden",
+                        height: "400px",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
                       {data.images && data.images[0] ? (
-                        <div className="post-thumbnail">
-                          <div className="round-shape">
-                            <Image
-                              src="/images/icons/shape-01.webp"
-                              alt="Round Shape"
-                              height={77}
-                              width={410}
-                              priority={true}
-                            />
-                          </div>
+                        <div
+                          className="post-thumbnail"
+                          style={{ marginBottom: "15px", flexShrink: 0 }}
+                        >
                           <Link href={`/${locale}/post/${data.id}`}>
-                            <a>
+                            <a style={{ display: "block" }}>
                               <Image
                                 src={data.images[0]}
                                 alt={
@@ -178,9 +178,15 @@ const PostSectionTwo = ({ postData, adBanner, headingTitle, services }) => {
                                     ? data.title_en
                                     : data.title_ar
                                 }
-                                height={260}
-                                width={390}
+                                height={200}
+                                width={300}
                                 priority={true}
+                                style={{
+                                  borderRadius: "15px",
+                                  objectFit: "cover",
+                                  width: "100%",
+                                  height: "200px",
+                                }}
                               />
                             </a>
                           </Link>
@@ -188,6 +194,97 @@ const PostSectionTwo = ({ postData, adBanner, headingTitle, services }) => {
                       ) : (
                         ""
                       )}
+
+                      <div
+                        className="post-content"
+                        style={{
+                          flex: 1,
+                          display: "flex",
+                          padding: "15px",
+                          flexDirection: "column",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <div>
+                          {/* Title */}
+                          <h4
+                            className="title"
+                            style={{
+                              fontSize: "1.6rem",
+                              fontWeight: "600",
+                              marginBottom: "10px",
+                              color: "#333",
+                              lineHeight: "1.4",
+                              fontFamily: "Cairo, sans-serif",
+                            }}
+                          >
+                            <Link href={`/${locale}/post/${data.id}`}>
+                              <a
+                                style={{
+                                  color: "inherit",
+                                  textDecoration: "none",
+                                  transition: "color 0.3s ease",
+                                }}
+                              >
+                                {locale === "en"
+                                  ? data.title_en
+                                  : data.title_ar}
+                              </a>
+                            </Link>
+                          </h4>
+                          <p
+                            style={{
+                              fontSize: "1.2rem",
+                              color: "#666",
+                              lineHeight: "1.4",
+                              margin: "0",
+                              textAlign: "center",
+                              height: "5.04rem",
+                              overflow: "hidden",
+                              display: "-webkit-box",
+                              WebkitLineClamp: 3,
+                              WebkitBoxOrient: "vertical",
+                              textOverflow: "ellipsis",
+                            }}
+                          >
+                            {locale === "en"
+                              ? data.content_en?.length > 150
+                                ? `${data.content_en.substring(0, 150)}...`
+                                : data.content_en
+                              : data.content_ar?.length > 150
+                              ? `${data.content_ar.substring(0, 150)}...`
+                              : data.content_ar}
+                          </p>
+                        </div>
+
+                        <button
+                          className="btn btn-success mt--10"
+                          style={{
+                            backgroundColor: "#198754",
+                            border: "none",
+                            borderRadius: "8px",
+                            padding: "10px 20px",
+                            fontSize: "0.9rem",
+                            fontWeight: "500",
+                            color: "white",
+                            transition: "all 0.3s ease",
+                            marginTop: "15px",
+                            fontFamily: "Cairo, sans-serif",
+                            cursor: "pointer",
+                            alignSelf: "center",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.target.style.backgroundColor = "#157347";
+                            e.target.style.transform = "translateY(-2px)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.target.style.backgroundColor = "#198754";
+                            e.target.style.transform = "translateY(0)";
+                          }}
+                        >
+                          {locale === "en" ? "Read More" : "المزيد"}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}

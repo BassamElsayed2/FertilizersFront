@@ -46,22 +46,15 @@ const HeaderThree = ({ darkLogo, lightLogo, postData }) => {
 
   const { t } = useTranslation("common");
 
-  const { data: ads } = useQuery({
-    queryKey: ["ads"],
-    queryFn: getAds,
-  });
-
-  const homeAds = ads?.filter((ad) => ad.location === "home");
-
   return (
     <>
       <header className="header axil-header header-style-3  header-light header-sticky">
         <div className="header-top">
           <div className="container">
-            <div className="row align-items-center">
-              <div className="col-lg-6 col-md-8 col-sm-12">
+            <div className="d-flex justify-content-between  align-items-center ">
+              <div className="d-flex justify-content-center align-items-center">
                 <div className="header-top-bar d-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
-                  <ul className="header-top-date liststyle d-flex flrx-wrap align-items-center mr--20">
+                  <ul className="header-top-date liststyle d-flex flex-wrap align-items-center mr--20 ml--20">
                     <li>
                       <Link href="#">
                         <a>{dateFormate()}</a>
@@ -87,10 +80,32 @@ const HeaderThree = ({ darkLogo, lightLogo, postData }) => {
                   </ul>
                 </div>
               </div>
-              <div className="col-lg-6 col-md-4 col-sm-12">
+
+              <div className="d-flex justify-content-center align-items-center">
                 <ul className="social-share-transparent md-size justify-content-center justify-content-md-end">
-                  <LanguageSwitcher />
+                  <li>
+                    <Link href="https://www.facebook.com">
+                      <a>
+                        <i className="fab fa-facebook-f"></i>
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="https://www.youtube.com">
+                      <a>
+                        <i className="fab fa-youtube"></i>
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="https://www.instagram.com">
+                      <a>
+                        <i className="fab fa-instagram"></i>
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
+                <LanguageSwitcher />
               </div>
             </div>
           </div>
@@ -105,34 +120,18 @@ const HeaderThree = ({ darkLogo, lightLogo, postData }) => {
                     <a>
                       <Image
                         className={logo?.logo_url || "dark-logo"}
-                        width={141}
-                        height={37}
+                        width={565}
+                        height={148}
                         src={
                           (colorMode === "Dark"
-                            ? lightLogo || "/images/logo/logo-white2.webp"
-                            : darkLogo || "/images/logo/logo-black.webp") ||
+                            ? lightLogo || "/logo.png"
+                            : darkLogo || "/logo.png") ||
                           "/images/logo/logo-black.webp"
                         }
-                        alt="Blogar logo"
+                        alt=" logo"
                       />
                     </a>
                   </Link>
-                </div>
-              </div>
-              <div className="col-lg-9 col-md-8 col-sm-6">
-                <div className="banner-add text-end">
-                  {homeAds?.[0] && (
-                    <Link href={homeAds[0].link || "#"}>
-                      <a>
-                        <Image
-                          src={homeAds[0].image_url}
-                          width={728}
-                          height={92}
-                          alt={homeAds[0].title_en}
-                        />
-                      </a>
-                    </Link>
-                  )}
                 </div>
               </div>
             </div>

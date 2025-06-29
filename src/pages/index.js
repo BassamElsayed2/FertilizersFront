@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getNews } from "../../services/apiNews";
 import GalleryOne from "../common/gallery/GalleryOne";
 import SliderOne from "../common/components/slider/SliderOne";
-import HeaderOne from "../common/elements/header/HeaderOne";
+import HeaderOne from "../common/elements/header/HeaderThree";
 import PostSectionOne from "../common/components/post/PostSectionOne";
 import PostSectionTwo from "../common/components/post/PostSectionTwo";
 import SliderTwo from "../common/components/slider/SliderTwo";
@@ -35,23 +35,25 @@ const TechBlog = ({ allPosts }) => {
 
   return (
     <>
-      <HeadTitle />
-      <HeaderOne />
-      <SliderThree />
-      <PostSectionOne postData={allPosts} />
-      <PostSectionTwo
-        postData={allPosts}
-        services={filteredServices}
-        headingTitle="services"
-      />
-      <PostSectionTen postData={allPosts} />
-      <PostSectionTwo
-        postData={allPosts}
-        services={filteredNews}
-        headingTitle="news"
-      />
+      <div className="main">
+        <HeadTitle />
+        <HeaderOne />
+        <SliderThree />
+        <PostSectionOne postData={allPosts} />
+        <PostSectionTwo
+          postData={allPosts}
+          services={filteredServices}
+          headingTitle="services"
+        />
+        <PostSectionTen postData={allPosts} />
+        <PostSectionTwo
+          postData={allPosts}
+          services={filteredNews}
+          headingTitle="news"
+        />
 
-      <GalleryOne parentClass="bg-color-grey" />
+        <GalleryOne parentClass="bg-color-grey" />
+      </div>
       <FooterThree />
     </>
   );

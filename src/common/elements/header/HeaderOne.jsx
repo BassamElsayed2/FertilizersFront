@@ -33,7 +33,7 @@ const HeaderOne = ({ pClass, darkLogo, lightLogo, postData }) => {
         <div className="header-wrap">
           <div className="row justify-content-between align-items-center">
             <div className="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-12">
-              <div className="logo">
+              <div className="logo ">
                 <Link href="/">
                   <a>
                     <Image

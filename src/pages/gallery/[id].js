@@ -30,12 +30,12 @@ export default function GalleryDetailsPage() {
     queryFn: getNews,
   });
 
-  const { data: ads } = useQuery({
-    queryKey: ["ads"],
-    queryFn: getAds,
-  });
+  // const { data: ads } = useQuery({
+  //   queryKey: ["ads"],
+  //   queryFn: getAds,
+  // });
 
-  const otherads = ads?.filter((ad) => ad.location === "other");
+  // const otherads = ads?.filter((ad) => ad.location === "other");
 
   const SlideGallery = () => {
     function SlickNextArrow(props) {
@@ -117,7 +117,7 @@ export default function GalleryDetailsPage() {
               <SidebarOne dataPost={postData} />
             </div>
           </div>
-          {otherads?.length > 0 && (
+          {/* {otherads?.length > 0 && (
             <div className="row">
               <div className="col-lg-12">
                 <AddBanner
@@ -128,7 +128,7 @@ export default function GalleryDetailsPage() {
                 />
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
       <FooterThree />
