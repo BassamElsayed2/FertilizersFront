@@ -74,7 +74,7 @@ const SliderThree = ({
                 className="d-block w-100"
                 height={height}
                 width={1305}
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "cover" }}
                 playsInline
                 controls={false}
                 muted={false}

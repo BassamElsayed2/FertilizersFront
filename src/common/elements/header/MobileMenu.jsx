@@ -66,6 +66,16 @@ const MobileMenu = ({ menuShow, menuHide }) => {
             </Link>
           </li>
           <li className="menu-item-has-children">
+            <Link href={`/${locale}/services`}>
+              {locale === "en" ? "All Services" : "جميع الخدمات"}
+            </Link>
+          </li>
+          <li className="menu-item-has-children">
+            <Link href={`/${locale}/products`}>
+              {locale === "en" ? "All Products" : "جميع المنتاجات"}
+            </Link>
+          </li>
+          <li className="menu-item-has-children">
             <Link href={`/${locale}/gallery`}>
               <a>{locale === "en" ? "Gallery" : "معرض الصور"}</a>
             </Link>

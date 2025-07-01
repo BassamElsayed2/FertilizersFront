@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import HeaderOne from "../../common/elements/header/HeaderOne";
 import HeadTitle from "../../common/elements/head/HeadTitle";
 import { useQuery } from "@tanstack/react-query";
@@ -6,7 +6,6 @@ import { getNews } from "../../../services/apiNews";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import { slugify } from "../../common/utils";
 import { SortingByDate } from "../../common/utils";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getAllPosts } from "../../../lib/api";
@@ -16,21 +15,25 @@ import GalleryOne from "../../common/gallery/GalleryOne";
 export default function NewsPage({ allPosts }) {
   const router = useRouter();
   const { locale, query } = router;
+
   const [searchTerm, setSearchTerm] = useState(query.search || "");
   const [hoveredCard, setHoveredCard] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9; // عدد العناصر في كل صفحة
+  const [currentPage, setCurrentPage] = useState(Number(query.page) || 1);
+  const itemsPerPage = 9;
 
   const {
     data: news = [],
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["news"],
+    queryKey: ["news", locale],
     queryFn: getNews,
   });
 
-  // Update URL when search changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
   useEffect(() => {
     const queryParams = new URLSearchParams();
     if (searchTerm) queryParams.set("search", searchTerm);
@@ -41,7 +44,7 @@ export default function NewsPage({ allPosts }) {
       : router.pathname;
 
     router.push(newUrl, undefined, { shallow: true });
-  }, [searchTerm, currentPage, router]);
+  }, [searchTerm, currentPage]);
 
   const filteredNews = news.filter((item) => {
     const matchesSearch = (locale === "en" ? item.title_en : item.title_ar)
@@ -49,14 +52,11 @@ export default function NewsPage({ allPosts }) {
       .includes(searchTerm.toLowerCase());
     const isNewsCategory =
       item.category?.name_en?.toLowerCase() === "news" ||
-      item.category?.name_ar?.toLowerCase() === "news";
+      item.category?.name_ar?.toLowerCase() === "خبر";
     return matchesSearch && isNewsCategory;
   });
 
-  // حساب عدد الصفحات
   const totalPages = Math.ceil(filteredNews.length / itemsPerPage);
-
-  // الحصول على العناصر الخاصة بالصفحة الحالية
   const currentItems = filteredNews.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -71,26 +71,17 @@ export default function NewsPage({ allPosts }) {
     });
   };
 
-  // دالة للتنقل بين الصفحات
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   if (isLoading)
-    return (
-      <div className="container mt-5 text-center">
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    );
+    return <div className="container mt-5 text-center">Loading...</div>;
   if (error)
     return (
-      <div className="container mt-5 text-center">
-        <div className="alert alert-danger" role="alert">
-          {locale === "en" ? "Error loading news" : "خطأ في تحميل الأخبار"}
-        </div>
+      <div className="container mt-5 text-center text-danger">
+        {locale === "en" ? "Error loading news" : "خطأ في تحميل الأخبار"}
       </div>
     );
 
@@ -103,31 +94,29 @@ export default function NewsPage({ allPosts }) {
       />
 
       <div className="container mt-5 mb-5">
-        {/* Search Section */}
-        <div className="mb-5">
-          <div className="row justify-content-center">
-            <div className="col-md-6">
-              <div className="search-box position-relative">
-                <input
-                  type="text"
-                  className="form-control form-control-lg ps-5"
-                  placeholder={
-                    locale === "en" ? "Search news..." : "ابحث عن الأخبار..."
-                  }
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
+        <div className="row justify-content-center mb-5">
+          <div className="col-md-8">
+            <div className="search-box position-relative">
+              <input
+                type="text"
+                className="form-control form-control-lg ps-5"
+                placeholder={
+                  locale === "en" ? "Search news..." : "ابحث عن الأخبار..."
+                }
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <span className="search-icon position-absolute top-50 start-0 translate-middle-y ms-3 text-muted">
+                <i className="fas fa-search"></i>
+              </span>
             </div>
           </div>
         </div>
-
-        {/* News Grid */}
         <div className="row g-4">
           {currentItems.map((item) => (
             <div key={item.id} className="col-md-4">
               <div
-                className={`card h-100 news-card ${
+                className={`news-card card h-100 ${
                   hoveredCard === item.id ? "card-hover" : ""
                 }`}
                 onMouseEnter={() => setHoveredCard(item.id)}
@@ -136,29 +125,22 @@ export default function NewsPage({ allPosts }) {
                 {item.images?.[0] && (
                   <div className="card-img-wrapper">
                     <Image
-                      width={600}
-                      height={400}
                       src={item.images[0]}
                       alt={locale === "en" ? item.title_en : item.title_ar}
                       layout="fill"
                       objectFit="cover"
-                      className="card-img-top"
                     />
-                    <div className="category-badge">
-                      <span className="badge bg-primary">
-                        {locale === "en"
-                          ? item.category?.name_en
-                          : item.category?.name_ar}
-                      </span>
-                    </div>
+                    <span className="badge bg-primary category-badge">
+                      {locale === "en"
+                        ? item.category?.name_en
+                        : item.category?.name_ar}
+                    </span>
                   </div>
                 )}
                 <div className="card-body">
                   <h5 className="card-title">
-                    <Link href={`/post/${item.id}`}>
-                      <a className="text-decoration-none text-dark stretched-link">
-                        {locale === "en" ? item.title_en : item.title_ar}
-                      </a>
+                    <Link href={`/${locale}/post/${item.id}`} scroll={false}>
+                      {locale === "en" ? item.title_en : item.title_ar}
                     </Link>
                   </h5>
                   <p className="card-text text-muted">
@@ -170,58 +152,53 @@ export default function NewsPage({ allPosts }) {
             </div>
           ))}
         </div>
-
-        {/* Pagination */}
         {totalPages > 1 && (
-          <div className="pagination-section mt-5">
-            <nav aria-label="Page navigation">
-              <ul className="pagination justify-content-center">
-                <li
-                  className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+          <nav className="mt-4">
+            <ul className="pagination justify-content-center">
+              <li
+                className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+              >
+                <button
+                  className="page-link"
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
                 >
-                  <button
-                    className="page-link"
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1}
-                  >
-                    {locale === "en" ? "Previous" : "السابق"}
-                  </button>
-                </li>
-
-                {[...Array(totalPages)].map((_, index) => (
+                  {locale === "en" ? "Previous" : "السابق"}
+                </button>
+              </li>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (num) => (
                   <li
-                    key={index + 1}
+                    key={num}
                     className={`page-item ${
-                      currentPage === index + 1 ? "active" : ""
+                      currentPage === num ? "active" : ""
                     }`}
                   >
                     <button
                       className="page-link"
-                      onClick={() => handlePageChange(index + 1)}
+                      onClick={() => handlePageChange(num)}
                     >
-                      {index + 1}
+                      {num}
                     </button>
                   </li>
-                ))}
-
-                <li
-                  className={`page-item ${
-                    currentPage === totalPages ? "disabled" : ""
-                  }`}
+                )
+              )}
+              <li
+                className={`page-item ${
+                  currentPage === totalPages ? "disabled" : ""
+                }`}
+              >
+                <button
+                  className="page-link"
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
                 >
-                  <button
-                    className="page-link"
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                  >
-                    {locale === "en" ? "Next" : "التالي"}
-                  </button>
-                </li>
-              </ul>
-            </nav>
-          </div>
+                  {locale === "en" ? "Next" : "التالي"}
+                </button>
+              </li>
+            </ul>
+          </nav>
         )}
-
         {filteredNews.length === 0 && (
           <div className="text-center mt-5 py-5">
             <i className="fas fa-newspaper fa-3x text-muted mb-3"></i>
@@ -233,7 +210,6 @@ export default function NewsPage({ allPosts }) {
       </div>
 
       <GalleryOne />
-
       <FooterThree />
 
       <style>{`
@@ -241,86 +217,54 @@ export default function NewsPage({ allPosts }) {
           background-color: #f8f9fa;
           min-height: 100vh;
         }
-        
-        .search-section {
-          background: white;
-          padding: 2rem;
-          border-radius: 15px;
-          box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        .search-box {
+          position: relative;
         }
-        
         .search-box input {
           border-radius: 12px;
           border: 2px solid #e9ecef;
           transition: all 0.3s ease;
-          font-size: 1.5rem;
-          height: 55px;
-          background-color: #f8f9fa;
+          font-size: 1.2rem;
+          height: 52px;
+          background-color: #fff;
+          padding-left: 2.5rem;
         }
-        
         .search-box input:focus {
           border-color: #0d6efd;
-          box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
-          background-color: white;
+          box-shadow: 0 0 0 0.1rem rgba(13, 110, 253, 0.08);
+          background-color: #f8f9fa;
         }
-        
-        .search-box input::placeholder {
-          color: #6c757d;
-          opacity: 0.7;
+        .search-icon {
+          left: 0.75rem;
+          font-size: 1.2rem;
+          pointer-events: none;
         }
-        
-        .search-box input:hover {
-          border-color: #0d6efd;
-          background-color: white;
-        }
-        
-        @media (max-width: 768px) {
-          .search-section {
-            padding: 1.5rem;
-          }
-          
-          .search-box input {
-            font-size: 0.95rem;
-            height: 50px;
-          }
-
-          .pagination {
-            flex-wrap: wrap;
-            justify-content: center;
-          }
-
-          .page-link {
-            padding: 0.4rem 0.8rem;
-            font-size: 0.9rem;
-          }
-        }
-        
         .news-card {
           border: none;
           border-radius: 15px;
           overflow: hidden;
           transition: all 0.3s ease;
-          box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+          position: relative;
+          background: #fff;
         }
-
-        .news-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        .news-card.card-hover {
+          transform: translateY(-5px) scale(1.01);
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.13);
         }
-
         .card-img-wrapper {
           position: relative;
           height: 200px;
           overflow: hidden;
         }
-
         .category-badge {
           position: absolute;
           top: 15px;
           right: 15px;
           z-index: 1;
+          font-size: 0.95rem;
+          padding: 0.5em 1em;
         }
-
         .card-title {
           font-size: 1.1rem;
           line-height: 1.4;
@@ -330,20 +274,12 @@ export default function NewsPage({ allPosts }) {
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
-
         .card-text {
-          font-size: 0.9rem;
+          font-size: 0.95rem;
         }
-
-        /* Pagination Styles */
-        .pagination-section {
-          margin-top: 3rem;
-        }
-
         .pagination {
           gap: 0.5rem;
         }
-
         .page-link {
           border-radius: 8px;
           border: 2px solid #e9ecef;
@@ -351,29 +287,34 @@ export default function NewsPage({ allPosts }) {
           padding: 0.5rem 1rem;
           transition: all 0.3s ease;
         }
-
         .page-link:hover {
           background-color: #e9ecef;
           border-color: #0d6efd;
         }
-
         .page-item.active .page-link {
           background-color: #0d6efd;
           border-color: #0d6efd;
           color: white;
         }
-
         .page-item.disabled .page-link {
           color: #6c757d;
           pointer-events: none;
           background-color: #f8f9fa;
           border-color: #e9ecef;
         }
+        @media (max-width: 768px) {
+          .search-box input {
+            font-size: 1rem;
+            height: 45px;
+          }
+          .card-img-wrapper {
+            height: 150px;
+          }
+        }
       `}</style>
     </div>
   );
 }
-
 export async function getStaticProps({ locale }) {
   const allPosts = getAllPosts([
     "postFormat",
@@ -394,6 +335,9 @@ export async function getStaticProps({ locale }) {
 
   SortingByDate(allPosts);
   return {
-    props: { allPosts, ...(await serverSideTranslations(locale, ["common"])) },
+    props: {
+      allPosts,
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
   };
 }

@@ -10,12 +10,12 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useQuery } from "@tanstack/react-query";
 import { getNews } from "../../services/apiNews";
 import GalleryOne from "../common/gallery/GalleryOne";
-import SliderOne from "../common/components/slider/SliderOne";
-import HeaderOne from "../common/elements/header/HeaderThree";
+
 import PostSectionOne from "../common/components/post/PostSectionOne";
 import PostSectionTwo from "../common/components/post/PostSectionTwo";
-import SliderTwo from "../common/components/slider/SliderTwo";
+
 import SliderThree from "../common/components/slider/SliderThree";
+import HeaderThree from "../common/elements/header/HeaderThree";
 
 const TechBlog = ({ allPosts }) => {
   const {
@@ -35,9 +35,9 @@ const TechBlog = ({ allPosts }) => {
 
   return (
     <>
-      <div className="main">
+      <div>
         <HeadTitle />
-        <HeaderOne />
+        <HeaderThree />
         <SliderThree />
         <PostSectionOne postData={allPosts} />
         <PostSectionTwo
@@ -51,10 +51,9 @@ const TechBlog = ({ allPosts }) => {
           services={filteredNews}
           headingTitle="news"
         />
-
         <GalleryOne parentClass="bg-color-grey" />
-     
-      <FooterThree /> </div>
+        <FooterThree />{" "}
+      </div>
     </>
   );
 };
