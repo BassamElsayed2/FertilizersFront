@@ -41,7 +41,7 @@ export default function NewsPage({ allPosts }) {
       : router.pathname;
 
     router.push(newUrl, undefined, { shallow: true });
-  }, [searchTerm, currentPage]);
+  }, [searchTerm, currentPage, router]);
 
   const filteredNews = news.filter((item) => {
     const matchesSearch = (locale === "en" ? item.title_en : item.title_ar)
@@ -136,6 +136,8 @@ export default function NewsPage({ allPosts }) {
                 {item.images?.[0] && (
                   <div className="card-img-wrapper">
                     <Image
+                      width={600}
+                      height={400}
                       src={item.images[0]}
                       alt={locale === "en" ? item.title_en : item.title_ar}
                       layout="fill"

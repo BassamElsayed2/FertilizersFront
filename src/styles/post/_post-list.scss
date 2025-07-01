@@ -61,6 +61,7 @@ line-clamp: 2;
 
   .post-content {
     .title {
+      
       margin-bottom: 0;
       display: -webkit-box; // تفعيل flexbox بطريقة خاصة للقص
       -webkit-box-orient: vertical;
@@ -68,7 +69,9 @@ line-clamp: 2;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: normal;
-      a {
+      a {font-size:11pt!important;
+        text-decoration: none;
+
         position: relative;
         display: inline;
         background-image: -webkit-gradient(
@@ -808,6 +811,7 @@ line-clamp: 2;
       }
       .title {
         margin-bottom: 10px;
+        font-sizE:14pt;
       }
     }
 
@@ -816,6 +820,11 @@ line-clamp: 2;
       padding: 30px 0;
       &.border-thin {
         border-width: 1px;
+         
+        padding-top:20px;
+        border-radius: 20px;
+        background-image: linear-gradient(#e4fcef, #ffffff)!important;
+        margin-top:6px;
       }
       &:last-child {
         padding-bottom: 0;
@@ -823,6 +832,10 @@ line-clamp: 2;
       }
       &:first-child {
         padding-top: 0;
+       
+        padding-top:20px;
+        border-radius: 20px;
+        background-image: linear-gradient(#e4fcef, #ffffff)!important;
       }
     }
 

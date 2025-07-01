@@ -41,7 +41,7 @@ export default function NewsPage({ allPosts }) {
       : router.pathname;
 
     router.push(newUrl, undefined, { shallow: true });
-  }, [searchTerm, currentPage]);
+  }, [searchTerm, currentPage, router]);
 
   const filteredNews = news.filter((item) => {
     const matchesSearch = (locale === "en" ? item.title_en : item.title_ar)

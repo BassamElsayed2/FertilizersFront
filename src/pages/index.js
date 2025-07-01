@@ -53,8 +53,8 @@ const TechBlog = ({ allPosts }) => {
         />
 
         <GalleryOne parentClass="bg-color-grey" />
-      </div>
-      <FooterThree />
+     
+      <FooterThree /> </div>
     </>
   );
 };

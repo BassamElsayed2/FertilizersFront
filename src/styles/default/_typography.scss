@@ -13,7 +13,29 @@ html {
 	padding: 0;
 	font-size: 10px;
 }
-
+.main{
+	width:1305PX;
+	margin:auto;
+	-webkit-box-shadow:0 0 30px rgb(39, 153, 11); 
+	-moz-box-shadow: 0 0 30px rgb(8, 153, 13); 
+	box-shadow:0 0 90px rgb(4, 143, 22);
+}
+.section-titlez{
+	text-align: center;
+}
+.imageicon{
+	color:rgb(0, 0, 0);
+	margin-left:10px;
+	font-size:30pt;
+	width:30px;
+	height:90px;
+}
+.section-titlez h2{
+	font-family: Cairo, sans-serif;
+	font-size:15pt;
+	color:green;
+	margin: auto;
+}
 body {
 	overflow: hidden;
 	font-size: var(--font-size-b1);;
@@ -23,7 +45,7 @@ body {
 	font-family: var(--font-primary);
 	color: var(--color-body);
 	font-weight: var(--p-regular);
-	background-image: linear-gradient(#024622, #4c800f);
+	background-image: linear-gradient(#024622, #4c800f)!important;
 }
 
 h1,
@@ -253,10 +275,13 @@ p {
 	&.b4 {
 		font-size: var(--font-size-b4);
 		line-height: var(--line-height-b4);
+		font-family: cairo;
 	}
 
 	&:last-child {
 		margin-bottom: 0;
+		font-family: cairo;
+		font-size:9pt;
 	}
 }
 
