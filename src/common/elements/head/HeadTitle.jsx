@@ -31,7 +31,7 @@ const HeadTitle = () => {
           process.env.NODE_ENV === "production"
             ? process.env.NEXT_PUBLIC_BASEPATH ?? ""
             : ""
-        }/favicon.ico`}
+        }/favicon.png`}
       />
     </Head>
   );

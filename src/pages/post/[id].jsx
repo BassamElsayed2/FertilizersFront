@@ -13,6 +13,7 @@ import SidebarOne from "../../common/components/sidebar/SidebarOne";
 import WidgetVideoPost from "../../common/components/sidebar/WidgetVideoPost";
 import { getAds } from "../../../services/apiAds";
 import AddBanner from "../../common/components/ad-banner/AddBanner";
+import Loader from "../../common/components/Loader";
 
 const NewsDetailsPage = ({ allPosts, initialData }) => {
   const { query, locale } = useRouter();
@@ -31,7 +32,7 @@ const NewsDetailsPage = ({ allPosts, initialData }) => {
   });
 
   if (isLoadingPost) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   // Get additional images excluding the first one (feature image)

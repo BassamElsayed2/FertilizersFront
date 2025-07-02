@@ -13,6 +13,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getAllPosts } from "../../../lib/api";
 import FooterThree from "../../common/elements/footer/FooterThree";
 import GalleryOne from "../../common/gallery/GalleryOne";
+import Loader from "../../common/components/Loader";
 
 export default function ServicesPage({ allPosts }) {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function ServicesPage({ allPosts }) {
 
   const {
     data: news = [],
-    isLoading,
+    isPending,
     error,
   } = useQuery({
     queryKey: ["news", locale],
@@ -78,8 +79,7 @@ export default function ServicesPage({ allPosts }) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (isLoading)
-    return <div className="container mt-5 text-center">Loading...</div>;
+  if (isPending) return <Loader />;
   if (error)
     return (
       <div className="container mt-5 text-center text-danger">

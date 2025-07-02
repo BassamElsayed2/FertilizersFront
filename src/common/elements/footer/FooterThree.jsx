@@ -82,7 +82,7 @@ const FooterThree = ({ bgColor, darkLogo, lightLogo }) => {
                 </div>
                 <ul className="mainmenu justify-content-start">
                   <li>
-                    <Link href="/contact">
+                    <Link href="/about">
                       <a className="hover-flip-item-wrapper">
                         <span className="hover-flip-item">
                           <span
@@ -159,7 +159,7 @@ const FooterThree = ({ bgColor, darkLogo, lightLogo }) => {
             <div className="col-lg-3 col-md-12">
               <div className="copyright-right text-start text-lg-end mt_md--20 mt_sm--20">
                 <p className="b3">
-                  All Rights Reserved © {new Date().getFullYear()}
+                  All Rights Reserved To ENS © {new Date().getFullYear()}
                 </p>
               </div>
             </div>
