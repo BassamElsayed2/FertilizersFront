@@ -19,9 +19,9 @@ const PostMetaOne = ({ metaData }) => {
   };
 
   return (
-    <div className="banner banner-single-post post-formate post-standard alignwide">
+    <div className="banner banner-single-post post-formate post-standard alignwide ">
       <div className="container">
-        <div className="row">
+        <div>
           <div className="col-lg-12">
             <div className="content-block">
               {metaData.images &&
@@ -39,8 +39,8 @@ const PostMetaOne = ({ metaData }) => {
                               ? metaData.title_en || ""
                               : metaData.title_ar || ""
                           }
-                          height={720}
-                          width={1440}
+                          height={400}
+                          width={1305}
                         />
                       </span>
                     </div>

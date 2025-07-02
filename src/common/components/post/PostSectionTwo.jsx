@@ -264,7 +264,7 @@ const PostSectionTwo = ({ postData, adBanner, headingTitle, services }) => {
                             border: "none",
                             borderRadius: "8px",
                             padding: "10px 20px",
-                            fontSize: "0.9rem",
+                            fontSize: "11px",
                             fontWeight: "500",
                             color: "white",
                             transition: "all 0.3s ease",

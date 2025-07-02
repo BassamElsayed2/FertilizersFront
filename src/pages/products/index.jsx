@@ -8,6 +8,7 @@ import PostMetaOne from "../../common/components/post/format/element/PostMetaOne
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useMemo } from "react";
+import HeadTitle from "../../common/elements/head/HeadTitle";
 
 const ProductsPage = ({ allPosts, initialData }) => {
   const { locale } = useRouter();
@@ -83,6 +84,7 @@ const ProductsPage = ({ allPosts, initialData }) => {
 
   return (
     <>
+      <HeadTitle />
       <HeaderOne
         pClass="header-light header-sticky header-with-shadow"
         postData={allPosts}
@@ -277,17 +279,15 @@ const ProductsPage = ({ allPosts, initialData }) => {
                             <Link
                               href={`/${locale}/products/${product.id}`}
                               className="btn btn-outline-success"
-                              style={{
-                                borderRadius: "25px",
-                                padding: "8px 20px",
-                                fontSize: "0.9rem",
-                                fontFamily: "Cairo, sans-serif",
-                                fontWeight: "500",
-                                borderWidth: "2px",
-                                transition: "all 0.3s ease",
-                              }}
                             >
-                              {locale === "en" ? "Read More" : "اقرأ المزيد"}
+                              <a
+                                style={{
+                                  color: "green",
+                                  fontFamily: "Cairo, sans-serif",
+                                }}
+                              >
+                                {locale === "en" ? "Read More" : "اقرأ المزيد"}
+                              </a>
                             </Link>
                           </div>
                         </div>

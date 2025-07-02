@@ -22,8 +22,8 @@ export default function GalleryPage() {
       <HeadTitle pageTitle={locale === "en" ? "Gallery" : "معرض الصور"} />
       <HeaderOne pClass="header-light header-sticky header-with-shadow" />
 
-      <div className="container py-5">
-        <h1 className="text-center mb-5 fw-bold">
+      <div className="container py-5" style={{ minHeight: "72vh" }}>
+        <h1 className="text-center mb-5 fw-bold " style={{ color: "white" }}>
           {locale === "en" ? "Our Gallery" : "معرض الصور"}
         </h1>
 

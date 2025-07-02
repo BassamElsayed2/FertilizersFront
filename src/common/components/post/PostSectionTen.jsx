@@ -67,7 +67,7 @@ const PostSectionTen = () => {
         </div>
         <div className="row">
           <div className="col-lg-12">
-            <div className="row mt--40">
+            <div className="row  mt--40">
               <div className="col-xl-5 col-lg-6 col-md-12 col-12">
                 {otherPosts.length > 0 &&
                   otherPosts.map((data) => (
@@ -137,44 +137,23 @@ const PostSectionTen = () => {
               <div className="col-xl-7 col-lg-6 col-md-12 col-12 mt_md--40 mt_sm--40">
                 {firstPost && (
                   <div className="content-block content-block post-grid post-grid-transparent">
-                    {firstPost?.images && getImageSrc(firstPost.images) && (
-                      <div className="post-thumbnail">
-                        <Link href={`/${locale}/products/${firstPost?.id}`}>
-                          <span>
-                            <Image
-                              src={getImageSrc(firstPost.images)}
-                              alt={
-                                locale === "en"
-                                  ? firstPost?.title_en || "Product"
-                                  : firstPost?.title_ar || "المنتج"
-                              }
-                              height={660}
-                              width={705}
-                              priority={true}
-                            />
-                          </span>
-                        </Link>
-                      </div>
-                    )}
-                    <div className="post-grid-content">
-                      <div className="post-content">
-                        <h3 className="title">
-                          <Link href={`/${locale}/products/${firstPost?.id}`}>
-                            <a
-                              className="fw-bold mb-3"
-                              style={{
-                                fontSize: "2.5rem",
-                                color: "#000",
-                                fontFamily: "Cairo, sans-serif",
-                              }}
-                            >
-                              {locale === "en"
+                    <div className="post-thumbnail">
+                      <Link href={`/${locale}/products`}>
+                        <span>
+                          <img
+                            src={"/images/staticProduct.jpg"}
+                            alt={
+                              locale === "en"
                                 ? firstPost?.title_en || "Product"
-                                : firstPost?.title_ar || "المنتج"}
-                            </a>
-                          </Link>
-                        </h3>
-                      </div>
+                                : firstPost?.title_ar || "المنتج"
+                            }
+                            style={{
+                              width: "733px",
+                              height: "770px",
+                            }}
+                          />
+                        </span>
+                      </Link>
                     </div>
                   </div>
                 )}

@@ -88,7 +88,7 @@ export default function ServicesPage({ allPosts }) {
     );
 
   return (
-    <div className="news-page">
+    <div className="news-page main  ">
       <HeadTitle pageTitle={locale === "en" ? "News" : "الأخبار"} />
       <HeaderOne
         pClass="header-light header-sticky header-with-shadow"
@@ -132,7 +132,10 @@ export default function ServicesPage({ allPosts }) {
                       layout="fill"
                       objectFit="cover"
                     />
-                    <span className="badge bg-primary category-badge">
+                    <span
+                      className="badge bg-success  category-badge"
+                      style={{ fontFamily: "cairo" }}
+                    >
                       {locale === "en"
                         ? item.category?.name_en
                         : item.category?.name_ar}
@@ -140,7 +143,7 @@ export default function ServicesPage({ allPosts }) {
                   </div>
                 )}
                 <div className="card-body">
-                  <h5 className="card-title">
+                  <h5 className="card-title" style={{ fontFamily: "cairo" }}>
                     <Link href={`/${locale}/post/${item.id}`} scroll={false}>
                       {locale === "en" ? item.title_en : item.title_ar}
                     </Link>

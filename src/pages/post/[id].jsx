@@ -14,6 +14,7 @@ import WidgetVideoPost from "../../common/components/sidebar/WidgetVideoPost";
 import { getAds } from "../../../services/apiAds";
 import AddBanner from "../../common/components/ad-banner/AddBanner";
 import Loader from "../../common/components/Loader";
+import HeadTitle from "../../common/elements/head/HeadTitle";
 
 const NewsDetailsPage = ({ allPosts, initialData }) => {
   const { query, locale } = useRouter();
@@ -40,6 +41,7 @@ const NewsDetailsPage = ({ allPosts, initialData }) => {
 
   return (
     <>
+      <HeadTitle />
       <HeaderOne
         pClass="header-light header-sticky header-with-shadow"
         postData={allPosts}

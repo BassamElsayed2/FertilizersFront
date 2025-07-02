@@ -13,6 +13,7 @@ import SidebarOne from "../../common/components/sidebar/SidebarOne";
 import WidgetVideoPost from "../../common/components/sidebar/WidgetVideoPost";
 import { getAds } from "../../../services/apiAds";
 import AddBanner from "../../common/components/ad-banner/AddBanner";
+import HeadTitle from "../../common/elements/head/HeadTitle";
 
 const ProductDetailsPage = ({ allPosts, initialData }) => {
   const { query, locale } = useRouter();
@@ -24,8 +25,6 @@ const ProductDetailsPage = ({ allPosts, initialData }) => {
     enabled: !!id,
     initialData,
   });
-
-  console.log(details);
 
   const { data: postData } = useQuery({
     queryKey: ["products"],
@@ -46,6 +45,8 @@ const ProductDetailsPage = ({ allPosts, initialData }) => {
 
   return (
     <>
+      <HeadTitle />
+
       <HeaderOne
         pClass="header-light header-sticky header-with-shadow"
         postData={allPosts}
