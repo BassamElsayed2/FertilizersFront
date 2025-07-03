@@ -43,7 +43,7 @@ const WidgetProductPost = ({ postData, title }) => {
               ""
             )}
             <div className="post-content">
-              <h6 className="title">
+              <h6 className="title mb-5">
                 <Link href={`/post/${data.id}`}>
                   <a>{locale === "ar" ? data.title_ar : data.title_en}</a>
                 </Link>
