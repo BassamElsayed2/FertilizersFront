@@ -2,13 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLocale } from "next-intl";
 
-const WidgetVideoPost = ({ postData, title }) => {
+const WidgetProductPost = ({ postData, title }) => {
   const locale = useLocale();
 
-  const videoPosts = postData?.filter(
-    (post) =>
-      post.category?.name_en === (title === "اخر الخدمات" ? "Service" : "news")
-  );
+  const videoPosts = postData?.filter((post) => post.yt_code);
 
   return (
     <div className="axil-single-widget widget-style-2 widget widget_post mt--30">
@@ -59,4 +56,4 @@ const WidgetVideoPost = ({ postData, title }) => {
   );
 };
 
-export default WidgetVideoPost;
+export default WidgetProductPost;

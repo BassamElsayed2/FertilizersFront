@@ -6,8 +6,10 @@ import Nav from "./Nav";
 import LanguageSwitcher from "../LanguageSwitcher";
 import { useQuery } from "@tanstack/react-query";
 import { getAboutUs } from "../../../../services/apiAboutUs";
+import { useRouter } from "next/router";
 
 const HeaderOne = ({ pClass, darkLogo, lightLogo, postData }) => {
+  const { locale } = useRouter();
   if (typeof window !== "undefined") {
     var colorMode = window.localStorage.getItem("color-mode");
   }
@@ -40,7 +42,7 @@ const HeaderOne = ({ pClass, darkLogo, lightLogo, postData }) => {
                       className={"dark-logo"}
                       width={141}
                       height={37}
-                      src={logo?.logo_url || "/images/logo/logo-black.webp"}
+                      src={locale === "ar" ? "/logo1.webp" : "/logo2.webp"}
                       alt="Blogar logo"
                     />
                   </a>

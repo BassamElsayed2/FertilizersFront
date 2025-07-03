@@ -101,7 +101,14 @@ const NewsDetailsPage = ({ allPosts, initialData }) => {
             </div>
             <div className="col-lg-4">
               {/* <SidebarOne dataPost={postData} /> */}
-              <WidgetVideoPost postData={postData} />
+              <WidgetVideoPost
+                postData={postData}
+                title={
+                  details?.category?.name_en === "Service"
+                    ? "اخر الخدمات"
+                    : "اخر الاخبار"
+                }
+              />
             </div>
           </div>
         </div>

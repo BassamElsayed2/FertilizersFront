@@ -64,23 +64,27 @@ const PostSectionTwo = ({ postData, adBanner, headingTitle, services }) => {
     slidesToScroll: 1,
     nextArrow: <SlickNextArrow />,
     prevArrow: <SlickPrevArrow />,
+    arrows: true,
     responsive: [
       {
         breakpoint: 992,
         settings: {
           slidesToShow: 2,
+          arrows: true,
         },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
+          arrows: true,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
+          arrows: true,
         },
       },
     ],

@@ -14,6 +14,7 @@ import WidgetVideoPost from "../../common/components/sidebar/WidgetVideoPost";
 import { getAds } from "../../../services/apiAds";
 import AddBanner from "../../common/components/ad-banner/AddBanner";
 import HeadTitle from "../../common/elements/head/HeadTitle";
+import WidgetProductPost from "../../common/components/sidebar/WidgetProductPost";
 
 const ProductDetailsPage = ({ allPosts, initialData }) => {
   const { query, locale } = useRouter();
@@ -106,6 +107,9 @@ const ProductDetailsPage = ({ allPosts, initialData }) => {
 
                 <div
                   className="post-details-content fs-4"
+                  style={{
+                    fontFamily: "Cairo, sans-serif",
+                  }}
                   dangerouslySetInnerHTML={{
                     __html:
                       locale === "en"
@@ -144,7 +148,7 @@ const ProductDetailsPage = ({ allPosts, initialData }) => {
             </div>
             <div className="col-lg-4">
               {/* <SidebarOne dataPost={postData} /> */}
-              <WidgetVideoPost postData={postData} />
+              <WidgetProductPost postData={postData} />
             </div>
           </div>
         </div>

@@ -54,14 +54,12 @@ const HeaderThree = ({ darkLogo, lightLogo, postData }) => {
             <div className="d-flex justify-content-between  align-items-center ">
               <div className="d-flex justify-content-center align-items-center">
                 <div className="header-top-bar d-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
-                  <ul className="header-top-date liststyle d-flex flex-wrap align-items-center mr--20 ml--20">
+                  <ul className="header-top-nav liststyle d-none d-md-flex flrx-wrap align-items-center">
                     <li>
                       <Link href="#">
                         <a>{dateFormate()}</a>
                       </Link>
                     </li>
-                  </ul>
-                  <ul className="header-top-nav liststyle d-flex flrx-wrap align-items-center">
                     <li>
                       <Link href="#">
                         <a>{t("advertisement")}</a>
@@ -81,8 +79,8 @@ const HeaderThree = ({ darkLogo, lightLogo, postData }) => {
                 </div>
               </div>
 
-              <div className="d-flex justify-content-center align-items-center">
-                <ul className="social-share-transparent md-size justify-content-center justify-content-md-end">
+              <div className="d-flex justify-content-center align-items-center p-2">
+                <ul className="social-share-transparent md-size justify-content-center justify-content-md-end ">
                   <li>
                     <Link href="https://www.facebook.com">
                       <a>
