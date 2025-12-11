@@ -121,25 +121,42 @@ const NewsDetailsPage = ({ allPosts, initialData }) => {
 export default NewsDetailsPage;
 
 export async function getStaticPaths() {
-  // Get all news IDs
-  const news = await getNews();
+  try {
+    // Get all news IDs
+    const news = await getNews();
 
-  // Create paths for each news item
-  const paths = news.map((item) => ({
-    params: { id: item.id.toString() },
-    locale: "en", // English version
-  }));
+    // Check if news is valid and is an array
+    if (!news || !Array.isArray(news) || news.length === 0) {
+      return {
+        paths: [],
+        fallback: "blocking",
+      };
+    }
 
-  // Add Arabic versions
-  const arabicPaths = news.map((item) => ({
-    params: { id: item.id.toString() },
-    locale: "ar", // Arabic version
-  }));
+    // Create paths for each news item
+    const paths = news.map((item) => ({
+      params: { id: item.id.toString() },
+      locale: "en", // English version
+    }));
 
-  return {
-    paths: [...paths, ...arabicPaths],
-    fallback: "blocking", // Show a loading state while generating new pages
-  };
+    // Add Arabic versions
+    const arabicPaths = news.map((item) => ({
+      params: { id: item.id.toString() },
+      locale: "ar", // Arabic version
+    }));
+
+    return {
+      paths: [...paths, ...arabicPaths],
+      fallback: "blocking", // Show a loading state while generating new pages
+    };
+  } catch (error) {
+    console.error("Error in getStaticPaths:", error);
+    // Return empty paths with blocking fallback to allow dynamic generation
+    return {
+      paths: [],
+      fallback: "blocking",
+    };
+  }
 }
 
 export async function getStaticProps({ params, locale }) {

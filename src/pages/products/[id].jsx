@@ -165,6 +165,14 @@ export async function getStaticPaths() {
     // Get all product IDs
     const products = await getProducts();
 
+    // Check if products is valid and is an array
+    if (!products || !Array.isArray(products) || products.length === 0) {
+      return {
+        paths: [],
+        fallback: "blocking",
+      };
+    }
+
     // Create paths for each product item
     const paths = products.map((item) => ({
       params: { id: item.id.toString() },
@@ -183,6 +191,7 @@ export async function getStaticPaths() {
     };
   } catch (error) {
     console.error("Error in getStaticPaths:", error);
+    // Return empty paths with blocking fallback to allow dynamic generation
     return {
       paths: [],
       fallback: "blocking",
