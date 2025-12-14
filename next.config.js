@@ -9,7 +9,7 @@ const nextConfig = {
       : "",
   i18n,
   images: {
-    domains: ["cdbfuwylbuxuhficutbv.supabase.co"],
+    domains: ["rfiginsaaimzuwsmwthk.supabase.co" , "cdbfuwylbuxuhficutbv.supabase.co"],
   },
 };
 
